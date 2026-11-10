@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Las capas de un servidor de modelos · Layer stack</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Geist', system-ui, sans-serif; background: #F7F6F2; color: #0F2547;
+           min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2.5rem 2rem; }
+    .frame { max-width: 1120px; width: 100%; }
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow { font-family: 'Geist Mono', monospace; font-size: 0.66rem; font-weight: 500; letter-spacing: 0.18em;
+               text-transform: uppercase; color: #3B5B8C; margin-bottom: 0.5rem; }
+    h1 { font-family: 'Instrument Serif', serif; font-size: clamp(1.5rem, 2.4vw + 0.75rem, 2rem); font-weight: 400;
+         letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1.5rem; }
+    svg { width: 100%; min-width: 1040px; display: block; }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <p class="eyebrow">Layer stack · Serie C · vLLM Field Guide</p>
+    <h1>Lo que hay entre tu código y la GPU, y en qué unidad lo abrimos</h1>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1040 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c0-stack-title c0-stack-desc">
+        <title id="c0-stack-title">Capas de un servidor vLLM y la unidad que cubre cada una</title>
+        <desc id="c0-stack-desc">Seis capas de arriba abajo, aplicación, API compatible con OpenAI, scheduler con continuous batching, memoria con KV-cache en bloques, pesos del modelo y GPU en Cloud Run, cada una con la unidad de la Serie C donde se estudia.</desc>
+        <rect width="1040" height="520" fill="#F7F6F2"/>
+        <rect x="120" y="40" width="680" height="56" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="140" y="63" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">APLICACIÓN</text>
+        <text x="300" y="65" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Tu código con el cliente de OpenAI</text>
+        <text x="300" y="82" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">base_url, streaming, JSON</text>
+        <text x="832" y="73" fill="#3B5B8C" font-size="11" font-weight="600" font-family="'Geist Mono', monospace">C1 · C4</text>
+        <rect x="120" y="104" width="680" height="56" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="140" y="127" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">API</text>
+        <text x="300" y="129" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Rutas compatibles con OpenAI</text>
+        <text x="300" y="146" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">/v1/chat/completions · /tokenize · /metrics</text>
+        <text x="832" y="137" fill="#3B5B8C" font-size="11" font-weight="600" font-family="'Geist Mono', monospace">C1 · C5</text>
+        <rect x="120" y="168" width="680" height="56" rx="6" fill="rgba(197,146,22,0.10)" stroke="#C59216" stroke-width="1.2"/>
+        <text x="140" y="191" fill="#9A6F0B" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">SCHEDULER</text>
+        <text x="300" y="193" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Quién entra al siguiente paso de decode</text>
+        <text x="300" y="210" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">continuous batching · cola de espera</text>
+        <text x="832" y="201" fill="#9A6F0B" font-size="11" font-weight="600" font-family="'Geist Mono', monospace">C3</text>
+        <rect x="120" y="232" width="680" height="56" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="140" y="255" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">MEMORIA</text>
+        <text x="300" y="257" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">KV-cache en bloques</text>
+        <text x="300" y="274" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">PagedAttention · prefix caching</text>
+        <text x="832" y="265" fill="#3B5B8C" font-size="11" font-weight="600" font-family="'Geist Mono', monospace">C2 · C3</text>
+        <rect x="120" y="296" width="680" height="56" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="140" y="319" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">MODELO</text>
+        <text x="300" y="321" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Pesos de Gemma 4</text>
+        <text x="300" y="338" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">bf16 o cuantizado</text>
+        <text x="832" y="329" fill="#3B5B8C" font-size="11" font-weight="600" font-family="'Geist Mono', monospace">C2</text>
+        <rect x="120" y="360" width="680" height="56" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="140" y="383" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">INFRAESTRUCTURA</text>
+        <text x="300" y="385" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">GPU L4 en Cloud Run</text>
+        <text x="300" y="402" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">on-demand · pesos en Cloud Storage</text>
+        <text x="832" y="393" fill="#3B5B8C" font-size="11" font-weight="600" font-family="'Geist Mono', monospace">C5</text>
+        <text x="120" y="436" fill="#3B5B8C" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">vLLM se lleva la fama por el scheduler y la memoria, las dos capas que no ves desde la API.</text>
+        <line x1="40" y1="464" x2="1000" y2="464" stroke="rgba(15,37,71,0.10)" stroke-width="0.8"/>
+        <text x="40" y="484" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEYENDA</text>
+        <rect x="120" y="476" width="12" height="10" rx="2" fill="rgba(197,146,22,0.10)" stroke="#C59216"/>
+        <text x="138" y="484" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">la capa que más cambia el costo</text>
+        <text x="360" y="484" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">derecha: unidad donde se mide</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

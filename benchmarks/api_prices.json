@@ -1,0 +1,11 @@
+{
+  "model": "gemini-3.8-flash",
+  "tier": "Standard, Gemini Developer API",
+  "usd_per_million": {
+    "intro_until_2026_12_31": {"input": 0.75, "output": 3.75},
+    "from_2027_01_01": {"input": 1.50, "output": 7.50}
+  },
+  "checked": "2026-11-10",
+  "source": "https://ai.google.dev/gemini-api/docs/pricing",
+  "note": "Precio de lista por millón de tokens. Es un punto de comparación, no un modelo equivalente a Gemma 4 E4B: Flash es más capaz. Revisa la página antes de decidir."
+}

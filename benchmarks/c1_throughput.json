@@ -1,0 +1,15 @@
+{
+  "source": "first-vllm-server-with-gemma/benchmarks/latest_results.json",
+  "measured": "2026-11-10T18:14:25+00:00",
+  "setup": "vLLM 0.33.0, google/gemma-4-E4B-it bf16, Cloud Run us-east4, 1 NVIDIA L4, 256 output tokens per request",
+  "rows": [
+    {
+      "users": 1,
+      "output_tokens_per_s": 25.3
+    },
+    {
+      "users": 8,
+      "output_tokens_per_s": 193.0
+    }
+  ]
+}

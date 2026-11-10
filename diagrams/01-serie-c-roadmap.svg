@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1040 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c0-roadmap-title c0-roadmap-desc" id="d-01-serie-c-roadmap-root">
+        <title id="c0-roadmap-title">Ruta de aprendizaje de la Serie C</title>
+        <desc id="c0-roadmap-desc">Cinco unidades en orden, cada una con la pregunta que responde y lo que mide, desde levantar el primer servidor vLLM con Gemma hasta calcular el costo real en producción.</desc>
+        <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #d-01-serie-c-roadmap-root { font-family: 'Geist', system-ui, sans-serif; color: #0F2547; }
+      #d-01-serie-c-roadmap-root .diagram-container { width: 100%; overflow-x: auto; }</style>
+          <marker id="d-01-serie-c-roadmap-c0r-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3B5B8C"/></marker>
+        </defs>
+        <rect width="1040" height="400" fill="#F7F6F2"/>
+
+        <line x1="208" y1="168" x2="224" y2="168" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-01-serie-c-roadmap-c0r-arrow)"/>
+        <line x1="408" y1="168" x2="424" y2="168" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-01-serie-c-roadmap-c0r-arrow)"/>
+        <line x1="608" y1="168" x2="624" y2="168" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-01-serie-c-roadmap-c0r-arrow)"/>
+        <line x1="808" y1="168" x2="824" y2="168" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-01-serie-c-roadmap-c0r-arrow)"/>
+
+        <!-- C1 focal -->
+        <rect x="28" y="72" width="180" height="192" rx="6" fill="#c59216" fill-opacity="0.10" stroke="#C59216" stroke-width="1.2"/>
+        <text x="44" y="96" fill="#9A6F0B" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">C1 · PRIMER SERVIDOR</text>
+        <text x="44" y="122" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">¿Qué es un servidor</text>
+        <text x="44" y="138" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">de inferencia?</text>
+        <text x="44" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">vllm serve + Gemma 4</text>
+        <text x="44" y="182" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">mismo SDK, otro base_url</text>
+        <text x="44" y="196" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">TTFT y tokens/s</text>
+        <text x="44" y="210" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">prefill contra decode</text>
+        <text x="44" y="224" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">$ por millón de tokens</text>
+
+        <rect x="228" y="72" width="180" height="192" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="244" y="96" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">C2 · MEMORIA</text>
+        <text x="244" y="122" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">¿Por qué un modelo de</text>
+        <text x="244" y="138" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">4B no cabe donde crees?</text>
+        <text x="244" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">pesos + KV-cache</text>
+        <text x="244" y="182" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">max-model-len</text>
+        <text x="244" y="196" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">tokenizador Gemma y Qwen</text>
+        <text x="244" y="210" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">cuantización y calidad</text>
+
+        <rect x="428" y="72" width="180" height="192" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="444" y="96" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">C3 · MUCHOS USUARIOS</text>
+        <text x="444" y="122" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">¿Por qué servir a uno</text>
+        <text x="444" y="138" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">es fácil y a 50 no?</text>
+        <text x="444" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">carga de 1 a 64 usuarios</text>
+        <text x="444" y="182" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">continuous batching</text>
+        <text x="444" y="196" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">PagedAttention</text>
+        <text x="444" y="210" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">prefix caching</text>
+
+        <rect x="628" y="72" width="180" height="192" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="644" y="96" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">C4 · CONFIANZA</text>
+        <text x="644" y="122" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">¿Cómo confío en lo</text>
+        <text x="644" y="138" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">que devuelve?</text>
+        <text x="644" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">JSON con esquema</text>
+        <text x="644" y="182" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">opciones y patrones</text>
+        <text x="644" y="196" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">tool calling</text>
+        <text x="644" y="210" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">streaming a la UI</text>
+
+        <rect x="828" y="72" width="180" height="192" rx="6" fill="#FFFFFF" stroke="#0F2547" stroke-width="1"/>
+        <text x="844" y="96" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">C5 · PRODUCCIÓN</text>
+        <text x="844" y="122" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">¿Cuánto cuesta</text>
+        <text x="844" y="138" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">de verdad?</text>
+        <text x="844" y="168" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">arranque en frío</text>
+        <text x="844" y="182" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">health y /metrics</text>
+        <text x="844" y="196" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">segunda instancia</text>
+        <text x="844" y="210" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">contra una API</text>
+
+        <text x="28" y="312" fill="#3B5B8C" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">Cada unidad corre completa en tu laptop con un servidor falso, y en una GPU L4 cuando quieres tus propios números.</text>
+
+        <line x1="28" y1="356" x2="1012" y2="356" stroke="#0f2547" stroke-opacity="0.10" stroke-width="0.8"/>
+        <text x="28" y="376" fill="#3B5B8C" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">LEYENDA</text>
+        <rect x="108" y="368" width="12" height="10" rx="2" fill="#c59216" fill-opacity="0.10" stroke="#C59216"/>
+        <text x="126" y="376" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">punto de entrada</text>
+        <rect x="248" y="368" width="12" height="10" rx="2" fill="#FFFFFF" stroke="#0F2547"/>
+        <text x="266" y="376" fill="#0F2547" font-size="9" font-family="'Geist', sans-serif">unidad siguiente, en orden</text>
+      </svg>
