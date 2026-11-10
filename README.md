@@ -79,5 +79,7 @@ Para correr la primera unidad contra una GPU real necesitas un proyecto de Googl
 
 ## Videos y artículos
 
-- **YouTube**: Próximamente.
-- **Substack (`ykro1.substack.com`)**: Próximamente.
+- **Práctica en YouTube**: [¿API o tu propio servidor? Field Guide de vLLM, práctica](https://youtu.be/IUJkq74Yijo)
+- **Artículos en Substack**:
+  1. [Servir tu propio modelo, una serie para software devs](https://ykro1.substack.com/p/servir-tu-propio-modelo-con-vllm)
+  2. [¿API o servidor propio?](https://ykro1.substack.com/p/api-o-servidor-propio)
