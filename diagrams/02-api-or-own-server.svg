@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 1040 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="c0-decision-title c0-decision-desc" id="d-02-api-or-own-server-root">
-        <title id="c0-decision-title">Cuándo conviene una API y cuándo un servidor vLLM propio</title>
-        <desc id="c0-decision-desc">Si los datos no pueden salir de tu proyecto, el camino es vLLM; si pueden, decide el volumen diario de GPU y la necesidad de fijar o adaptar el modelo, y en los demás casos conviene la API administrada.</desc>
+<svg viewBox="0 0 1040 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="decision-title decision-desc" id="d-02-api-or-own-server-root">
+        <title id="decision-title">Cuándo conviene una API y cuándo un servidor vLLM propio</title>
+        <desc id="decision-desc">Si los datos no pueden salir de tu proyecto, el camino es vLLM; si pueden, decide el volumen diario de GPU y la necesidad de fijar o adaptar el modelo, y en los demás casos conviene la API administrada.</desc>
         <defs>
       <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
       #d-02-api-or-own-server-root { font-family: 'Geist', system-ui, sans-serif; color: #0F2547; }
       #d-02-api-or-own-server-root .diagram-container { width: 100%; overflow-x: auto; }</style>
-          <marker id="d-02-api-or-own-server-c0d-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3B5B8C"/></marker>
-          <marker id="d-02-api-or-own-server-c0d-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#C59216"/></marker>
+          <marker id="d-02-api-or-own-server-d-arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#3B5B8C"/></marker>
+          <marker id="d-02-api-or-own-server-d-arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#C59216"/></marker>
         </defs>
         <rect width="1040" height="460" fill="#F7F6F2"/>
 
         <!-- Connectors: questions chain (yes, right), no goes down to API -->
-        <line x1="272" y1="128" x2="340" y2="128" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-02-api-or-own-server-c0d-arrow)"/>
-        <line x1="584" y1="128" x2="652" y2="128" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-02-api-or-own-server-c0d-arrow)"/>
-        <path d="M 896 128 L 932 128 Q 940 128 940 136 L 940 244" fill="none" stroke="#C59216" stroke-width="1.5" marker-end="url(#d-02-api-or-own-server-c0d-arrow-accent)"/>
-        <path d="M 200 80 L 200 60 Q 200 52 208 52 L 972 52 Q 980 52 980 60 L 980 244" fill="none" stroke="#C59216" stroke-width="1.5" marker-end="url(#d-02-api-or-own-server-c0d-arrow-accent)"/>
-        <path d="M 464 176 L 464 196 Q 464 204 456 204 L 180 204 Q 172 204 172 212 L 172 244" fill="none" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-02-api-or-own-server-c0d-arrow)"/>
-        <path d="M 776 176 L 776 216 Q 776 224 768 224 L 200 224 Q 192 224 192 232 L 192 244" fill="none" stroke="#3B5B8C" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#d-02-api-or-own-server-c0d-arrow)"/>
+        <line x1="272" y1="128" x2="340" y2="128" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-02-api-or-own-server-d-arrow)"/>
+        <line x1="584" y1="128" x2="652" y2="128" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-02-api-or-own-server-d-arrow)"/>
+        <path d="M 896 128 L 932 128 Q 940 128 940 136 L 940 244" fill="none" stroke="#C59216" stroke-width="1.5" marker-end="url(#d-02-api-or-own-server-d-arrow-accent)"/>
+        <path d="M 200 80 L 200 60 Q 200 52 208 52 L 972 52 Q 980 52 980 60 L 980 244" fill="none" stroke="#C59216" stroke-width="1.5" marker-end="url(#d-02-api-or-own-server-d-arrow-accent)"/>
+        <path d="M 464 176 L 464 196 Q 464 204 456 204 L 180 204 Q 172 204 172 212 L 172 244" fill="none" stroke="#3B5B8C" stroke-width="1.2" marker-end="url(#d-02-api-or-own-server-d-arrow)"/>
+        <path d="M 776 176 L 776 216 Q 776 224 768 224 L 200 224 Q 192 224 192 232 L 192 244" fill="none" stroke="#3B5B8C" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#d-02-api-or-own-server-d-arrow)"/>
 
         <!-- Labels -->
         <rect x="290" y="104" width="24" height="12" rx="2" fill="#F7F6F2"/>
@@ -64,7 +64,7 @@
         <rect x="820" y="248" width="200" height="88" rx="6" fill="#c59216" fill-opacity="0.10" stroke="#C59216" stroke-width="1.2"/>
         <text x="836" y="270" fill="#9A6F0B" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.14em">VLLM PROPIO</text>
         <text x="836" y="294" fill="#0F2547" font-size="12" font-weight="600" font-family="'Geist', sans-serif">Pagas por hora de GPU</text>
-        <text x="836" y="314" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">Serie C, de C1 a C5</text>
+        <text x="836" y="314" fill="#3B5B8C" font-size="9" font-family="'Geist Mono', monospace">las unidades 1 a 5</text>
 
         <text x="32" y="384" fill="#3B5B8C" font-size="14" font-style="italic" font-family="'Instrument Serif', serif">Si los datos no pueden salir, vas directo a tu propio servidor.</text>
 

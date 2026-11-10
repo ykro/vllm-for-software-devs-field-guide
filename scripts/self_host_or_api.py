@@ -8,7 +8,7 @@ many hours a day the GPU has to be on.
     python scripts/self_host_or_api.py --input-tokens-per-day 20000000 \
         --output-tokens-per-day 2000000 --busy-hours 10
 
-Throughput comes from C1 (benchmarks/c1_throughput.json, measured on one NVIDIA L4 with
+Throughput comes from first-vllm-server-with-gemma (benchmarks/first_server_throughput.json, measured on one NVIDIA L4 with
 Gemma 4 E4B through vLLM): one user at a time is the pessimistic case, eight at a time
 the optimistic one. Prices come from benchmarks/*.json, each with its source and date.
 """
@@ -45,7 +45,7 @@ def scenario(out_per_day: float, tokens_per_s: float, usd_per_hour: float,
 def compare(input_per_day: float, out_per_day: float, busy_hours: float) -> dict:
     api = load("api_prices.json")
     l4 = load("l4_instance_pricing.json")
-    tput = load("c1_throughput.json")
+    tput = load("first_server_throughput.json")
     api_costs = {
         label: (input_per_day * p["input"] + out_per_day * p["output"]) / 1e6 * DAYS
         for label, p in api["usd_per_million"].items()

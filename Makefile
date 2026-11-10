@@ -9,7 +9,7 @@ HOURS ?= 8
 all: lint verify
 
 verify:
-	$(PYTHON) scripts/verify_serie_c.py
+	$(PYTHON) scripts/verify_field_guide.py
 
 calc:
 	$(PYTHON) scripts/self_host_or_api.py --input-tokens-per-day $(IN) --output-tokens-per-day $(OUT) --busy-hours $(HOURS)

@@ -1,0 +1,32 @@
+[
+  {
+    "unit": "1",
+    "repo": "first-vllm-server-with-gemma",
+    "detail": "layout ok, mock judge passed",
+    "status": "PASS"
+  },
+  {
+    "unit": "2",
+    "repo": "tokens-memory-and-quantization-in-vllm",
+    "detail": "mock judge passed, diagrams pending",
+    "status": "PASS"
+  },
+  {
+    "unit": "3",
+    "repo": "many-users-one-gpu-with-vllm",
+    "detail": "mock judge failed",
+    "status": "FAIL"
+  },
+  {
+    "unit": "4",
+    "repo": "structured-outputs-and-tools-with-vllm",
+    "detail": "mock judge passed, diagrams pending",
+    "status": "PASS"
+  },
+  {
+    "unit": "5",
+    "repo": "vllm-in-production-on-cloud-run",
+    "detail": "mock judge passed, diagrams pending",
+    "status": "PASS"
+  }
+]
