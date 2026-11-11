@@ -14,8 +14,8 @@
   {
     "unit": "3",
     "repo": "many-users-one-gpu-with-vllm",
-    "detail": "mock judge failed",
-    "status": "FAIL"
+    "detail": "mock judge passed, diagrams pending",
+    "status": "PASS"
   },
   {
     "unit": "4",
