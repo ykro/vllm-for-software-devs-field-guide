@@ -26,6 +26,19 @@ UNITS = [
 ]
 
 
+MIN_PYTHON = (3, 11)
+
+
+def old_python_message(version: tuple[int, ...]) -> str | None:
+    """The unit judges need Python 3.11 or newer; macOS still ships 3.9 as /usr/bin/python3."""
+    if tuple(version[:2]) >= MIN_PYTHON:
+        return None
+    return (f"Python {version[0]}.{version[1]} is too old for the unit judges, which need "
+            f"{MIN_PYTHON[0]}.{MIN_PYTHON[1]} or newer.\n"
+            "Install a newer python3 (for example: brew install python), then create the virtual "
+            "environment again.")
+
+
 def layout_ok(repo: Path, judge: str) -> list[str]:
     missing = []
     if len(list((repo / "experiments").glob("0[1-5]_*.py"))) != 5:
@@ -43,6 +56,10 @@ def diagrams_ok(repo: Path) -> bool:
 
 
 def main() -> int:
+    too_old = old_python_message(sys.version_info)
+    if too_old:
+        print(too_old)
+        return 1
     python = sys.executable
     rows, ok_all = [], True
     for code, slug, judge in UNITS:

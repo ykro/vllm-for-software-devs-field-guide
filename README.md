@@ -65,7 +65,7 @@ vLLM    : Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instan
 
 ## Práctica, las cuentas a mano
 
-La carpeta `practica/` trae los archivos que se escriben en el video de práctica, cada uno con su test en `tests/test_practica.py`. Se corren desde la raíz del repositorio con `python3`, sin GPU. Los primeros no necesitan instalar nada; para el paquete de OpenAI y para `make all` se usa un entorno virtual, porque el Python de macOS y de muchas distribuciones de Linux no deja instalar paquetes fuera de uno.
+La carpeta `practica/` trae los archivos que se escriben en el video de práctica, cada uno con su test en `tests/test_practica.py`. Se corren desde la raíz del repositorio con `python3` 3.11 o más nuevo, sin GPU. El `python3` que trae macOS de fábrica es 3.9; con él `make all` se detiene y te pide uno más nuevo (por ejemplo, `brew install python`). Los primeros no necesitan instalar nada; para el paquete de OpenAI y para `make all` se usa un entorno virtual, porque el Python de macOS y de muchas distribuciones de Linux no deja instalar paquetes fuera de uno.
 
 ```bash
 python3 practica/01_costo_api.py      # lo que cobra una API al mes, con los precios por millón

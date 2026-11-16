@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib.util
 import shutil
 import subprocess
 import sys
@@ -22,3 +23,12 @@ def test_verifier_with_nothing_cloned_says_what_to_clone(tmp_path):
     assert "SOME UNITS FAILED." not in run.stdout
     assert ("git clone https://github.com/ykro/first-vllm-server-with-gemma.git "
             "../first-vllm-server-with-gemma") in run.stdout
+
+
+def test_verifier_names_the_python_it_needs():
+    spec = importlib.util.spec_from_file_location("verify", ROOT / "scripts" / "verify_field_guide.py")
+    verify = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(verify)
+    assert verify.old_python_message((3, 11, 0)) is None
+    assert "Python 3.9 is too old" in verify.old_python_message((3, 9, 6))
+    assert "3.11 or newer" in verify.old_python_message((3, 9, 6))
