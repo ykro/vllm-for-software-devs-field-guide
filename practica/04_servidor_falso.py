@@ -1,17 +1,19 @@
-"""Un servidor falso que habla como vLLM: recibe JSON por HTTP y devuelve JSON."""
+"""Un servidor falso que habla como vLLM: recibe JSON y devuelve JSON."""
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 
 class Falso(BaseHTTPRequestHandler):
     def do_POST(self):
-        pedido = json.loads(self.rfile.read(int(self.headers["Content-Length"])))
+        largo = int(self.headers["Content-Length"])
+        pedido = json.loads(self.rfile.read(largo))
         pregunta = pedido["messages"][-1]["content"]
         texto = f"(respuesta falsa) recibí {len(pregunta.split())} palabras"
-        cuerpo = {"model": pedido["model"],
-                  "choices": [{"message": {"role": "assistant", "content": texto}}],
-                  "usage": {"prompt_tokens": len(pregunta.split()),
-                            "completion_tokens": len(texto.split())}}
+        cuerpo = {
+            "model": pedido["model"],
+            "choices": [{"message": {"role": "assistant", "content": texto}}],
+            "usage": {"prompt_tokens": len(pregunta.split()),
+                      "completion_tokens": len(texto.split())}}
         self.send_response(200)
         self.send_header("Content-Type", "application/json")
         self.end_headers()

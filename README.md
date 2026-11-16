@@ -65,21 +65,30 @@ vLLM    : Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instan
 
 ## Práctica, las cuentas a mano
 
-La carpeta `practica/` trae los archivos que se escriben en el video de práctica, cada uno con su test en `tests/test_practica.py`. Se corren desde la raíz del repositorio con Python 3, sin GPU y sin instalar nada.
+La carpeta `practica/` trae los archivos que se escriben en el video de práctica, cada uno con su test en `tests/test_practica.py`. Se corren desde la raíz del repositorio con `python3`, sin GPU. Los primeros no necesitan instalar nada; para el paquete de OpenAI y para `make all` se usa un entorno virtual, porque el Python de macOS y de muchas distribuciones de Linux no deja instalar paquetes fuera de uno.
 
 ```bash
-python practica/01_costo_api.py      # lo que cobra una API al mes
-python practica/02_costo_gpu.py      # lo que cuesta una L4 on-demand, con 1 y con 8 usuarios a la vez
-python practica/03_cruce.py          # en qué volumen deja de ganar la API
-python practica/05_cliente.py        # falla a propósito: nadie escucha en el puerto 8000
-python practica/04_servidor_falso.py &
-python practica/05_cliente.py        # el mismo JSON que la API de OpenAI, contra el servidor falso
-kill %1
-python practica/06_cabe_roto.py      # falla a propósito: el modelo de 12B no cabe en una L4
-python practica/06_cabe.py           # la misma cuenta con 1 byte por parámetro
+python3 practica/01_costo_api.py      # lo que cobra una API al mes, con los precios por millón
+python3 practica/02_costo_gpu.py      # lo que cuesta una L4 on-demand, con 1 y con 8 usuarios a la vez
+python3 practica/03_cruce.py          # en qué volumen deja de ganar la API
+python3 practica/05_cliente.py        # falla a propósito: nadie escucha en el puerto 8000
+python3 practica/04_servidor_falso.py &
+python3 practica/05_cliente.py        # el mismo JSON que la API de OpenAI, contra el servidor falso
+
+python3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install openai
+python3 practica/05_cliente_openai.py # el paquete de OpenAI: cambian la dirección y la clave
+kill %1                               # apaga el servidor falso
+
+python3 practica/06_cabe_roto.py      # falla a propósito: el modelo de 12B no cabe en una L4
+python3 practica/06_cabe.py           # la misma cuenta con 1 byte por parámetro
+
+python3 -m pip install pytest ruff
+make all                              # lint, tests y verificador
 ```
 
-Para `make all` (lint, tests y verificador) instala `pytest`, `ruff` y `openai`.
+En `06_cabe*.py`, los 24 GB de la L4 son la etiqueta del fabricante (24,000,000,000 bytes). vLLM ve 22.03 GiB utilizables (1 GiB = 1,073,741,824 bytes). Con `--gpu-memory-utilization 0.92`, la configuración con la que se midió la memoria en una L4 real, vLLM se queda con el 92 %, 20.27 GiB. La reserva de 1.95 GiB es lo que se midió con Gemma 4 E4B para activaciones y memoria del sistema.
 
 ---
 
