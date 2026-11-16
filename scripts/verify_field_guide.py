@@ -72,8 +72,14 @@ def main() -> int:
     print(f"{len(checked)} checked, {len(rows) - len(checked)} skipped.")
     (ROOT / "benchmarks" / "field_guide_check.json").write_text(json.dumps(
         [{"unit": c, "repo": s, "detail": d, "status": st} for c, s, d, st in rows], indent=2))
-    print("ALL CHECKED UNITS PASSED." if ok_all and checked else "SOME UNITS FAILED.")
-    return 0 if ok_all and checked else 1
+    if not checked:
+        first = UNITS[0][1]
+        print("No unit of this path is cloned next to this repo, so there is nothing to check.")
+        print("Clone at least the first one:")
+        print(f"  git clone https://github.com/ykro/{first}.git ../{first}")
+        return 1
+    print("ALL CHECKED UNITS PASSED." if ok_all else "SOME UNITS FAILED.")
+    return 0 if ok_all else 1
 
 
 if __name__ == "__main__":

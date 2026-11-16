@@ -85,6 +85,7 @@ python3 practica/06_cabe_roto.py      # falla a propósito: el modelo de 12B no 
 python3 practica/06_cabe.py           # la misma cuenta con 1 byte por parámetro
 
 python3 -m pip install pytest ruff
+git clone https://github.com/ykro/first-vllm-server-with-gemma.git ../first-vllm-server-with-gemma
 make all                              # lint, tests y verificador
 ```
 
