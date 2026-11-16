@@ -4,15 +4,18 @@ OUT ?= 2000000
 IN ?= 20000000
 HOURS ?= 8
 
-.PHONY: all verify calc lint
+.PHONY: all verify calc lint test
 
-all: lint verify
+all: lint test verify
 
 verify:
 	$(PYTHON) scripts/verify_field_guide.py
 
 calc:
 	$(PYTHON) scripts/self_host_or_api.py --input-tokens-per-day $(IN) --output-tokens-per-day $(OUT) --busy-hours $(HOURS)
+
+test:
+	$(PYTHON) -m pytest -q tests
 
 lint:
 	$(RUFF) check .

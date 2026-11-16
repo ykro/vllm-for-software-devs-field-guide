@@ -63,6 +63,26 @@ vLLM    : Cloud Run, 1 NVIDIA L4 (sin redundancia zonal), 8 vCPU, 32 GiB, instan
 
 ---
 
+## Práctica, las cuentas a mano
+
+La carpeta `practica/` trae los archivos que se escriben en el video de práctica, cada uno con su test en `tests/test_practica.py`. Se corren desde la raíz del repositorio con Python 3, sin GPU y sin instalar nada.
+
+```bash
+python practica/01_costo_api.py      # lo que cobra una API al mes
+python practica/02_costo_gpu.py      # lo que cuesta una L4 on-demand, con 1 y con 8 usuarios a la vez
+python practica/03_cruce.py          # en qué volumen deja de ganar la API
+python practica/05_cliente.py        # falla a propósito: nadie escucha en el puerto 8000
+python practica/04_servidor_falso.py &
+python practica/05_cliente.py        # el mismo JSON que la API de OpenAI, contra el servidor falso
+kill %1
+python practica/06_cabe_roto.py      # falla a propósito: el modelo de 12B no cabe en una L4
+python practica/06_cabe.py           # la misma cuenta con 1 byte por parámetro
+```
+
+Para `make all` (lint, tests y verificador) instala `pytest`, `ruff` y `openai`.
+
+---
+
 ## Cómo recorrer la serie
 
 ```bash
