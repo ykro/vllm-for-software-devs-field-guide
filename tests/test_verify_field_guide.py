@@ -8,9 +8,12 @@ import subprocess
 import sys
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parent.parent
 
 
+@pytest.mark.skipif(sys.version_info < (3, 11), reason="before 3.11 the verifier asks for a newer Python")
 def test_verifier_with_nothing_cloned_says_what_to_clone(tmp_path):
     repo = tmp_path / "vllm-for-software-devs-field-guide"
     (repo / "scripts").mkdir(parents=True)
