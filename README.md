@@ -4,6 +4,7 @@
 - **Para quién es:** Desarrolladores que saben Python y ya llamaron una API de IA, pero nunca levantaron un modelo propio. No necesitas machine learning, ni JAX, ni PyTorch. Si sabes qué es una petición HTTP y has visto un JSON, tienes lo necesario.
 - **Qué usamos:** [vLLM](https://github.com/vllm-project/vllm) `0.33.0` (servidor de inferencia de software libre, con la misma API que OpenAI), [Gemma 4](https://huggingface.co/google/gemma-4-E4B-it) de Google (licencia Apache 2.0) y Cloud Run con una GPU NVIDIA L4 on-demand, que se apaga sola cuando nadie la usa.
 - **Video de práctica:** [las cuentas a mano con `practica/`, sin GPU](https://youtu.be/uf8cQv0R2K4).
+- **Artículo que amplía la práctica:** [Los 20 millones de tokens que la calculadora no cuenta](https://ykro1.substack.com/p/tokens-de-entrada-que-la-calculadora-no-cuenta).
 - **Otros Field Guides:** si quieres entender cómo aprende un modelo por dentro, empieza por el [Field Guide de Software Dev a ML y Foundational Models con JAX](https://github.com/ykro/jax-ml-for-software-devs-field-guide). Si ya entrenas con PyTorch, el [Field Guide de PyTorch a JAX y OpenXLA](https://github.com/ykro/jax-openxla-field-guide). El orden recomendado es primero el de JAX y ML, después este y al final el de PyTorch a JAX. Este también se puede tomar solo.
 
 ---
@@ -110,7 +111,9 @@ Para correr la primera unidad contra una GPU real necesitas un proyecto de Googl
 
 ## Videos y artículos
 
-- **Práctica en YouTube**: [¿API o tu propio servidor? Field Guide de vLLM, práctica](https://youtu.be/IUJkq74Yijo)
+- **Práctica en YouTube**: [API de IA o tu propio servidor, con números](https://youtu.be/uf8cQv0R2K4)
+- **Siguiente práctica**: [Tu primer servidor vLLM con Gemma](https://youtu.be/pYJXpZsEWgg)
 - **Artículos en Substack**:
   1. [Servir tu propio modelo, una serie para software devs](https://ykro1.substack.com/p/servir-tu-propio-modelo-con-vllm)
   2. [¿API o servidor propio?](https://ykro1.substack.com/p/api-o-servidor-propio)
+  3. [Los 20 millones de tokens que la calculadora no cuenta](https://ykro1.substack.com/p/tokens-de-entrada-que-la-calculadora-no-cuenta)
