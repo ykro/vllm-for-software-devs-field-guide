@@ -34,10 +34,10 @@ Cada repositorio trae **5 experimentos** que corres por separado, un **juez** (`
 | # | Repositorio | Pregunta | Qué mide |
 |---|---|---|---|
 | **1** | [first-vllm-server-with-gemma](https://github.com/ykro/first-vllm-server-with-gemma) | ¿Qué es un servidor de inferencia? | vLLM con Gemma 4 en una L4, HTTP puro y cliente de OpenAI cambiando solo el `base_url`, tiempo al primer token (TTFT) y tokens/s, prefill contra decode, costo por millón de tokens con 1 y con 8 usuarios. |
-| **2** | Próximamente | ¿Por qué un modelo de 4B no cabe donde uno cree? | Pesos contra KV-cache, `max-model-len`, tokenizadores de Gemma y Qwen, cuantización contra calidad. |
-| **3** | Próximamente | ¿Por qué servir a uno es fácil y a 50 no? | Prueba de carga de 1 a 64 usuarios, continuous batching, PagedAttention, prefix caching. |
-| **4** | Próximamente | ¿Cómo confío en lo que devuelve? | JSON con esquema, opciones y patrones, tool calling, streaming a la UI. |
-| **5** | Próximamente | ¿Cuánto cuesta de verdad? | Arranque en frío, health checks, `/metrics`, segunda instancia, comparación contra una API. |
+| **2** | [tokens-memory-and-quantization-in-vllm](https://github.com/ykro/tokens-memory-and-quantization-in-vllm) | ¿Por qué un modelo de 4B no cabe donde uno cree? | Pesos contra KV-cache, `max-model-len`, tokenizadores de Gemma y Qwen, cuantización contra calidad. |
+| **3** | [many-users-one-gpu-with-vllm](https://github.com/ykro/many-users-one-gpu-with-vllm) | ¿Por qué servir a uno es fácil y a 50 no? | Prueba de carga de 1 a 64 usuarios, continuous batching, PagedAttention, prefix caching. |
+| **4** | [structured-outputs-and-tools-with-vllm](https://github.com/ykro/structured-outputs-and-tools-with-vllm) | ¿Cómo confío en lo que devuelve? | JSON con esquema, opciones y patrones, tool calling, streaming a la UI. |
+| **5** | [vllm-in-production-on-cloud-run](https://github.com/ykro/vllm-in-production-on-cloud-run) | ¿Cuánto cuesta de verdad? | Arranque en frío, health checks, `/metrics`, segunda instancia, comparación contra una API. |
 
 **Lo que mide la primera unidad, en una línea.** En una L4 con Gemma 4 E4B, el primer token llega en **0.29 s** (casi todo es red), la respuesta sale a **25.5 tokens/s** por usuario, leer el prompt es unas **181 veces** más rápido que escribir, y el millón de tokens de salida cuesta **USD 15.60** con un usuario a la vez y **USD 2.06** con ocho. Detalle y salida del juez en el [README de first-vllm-server-with-gemma](https://github.com/ykro/first-vllm-server-with-gemma#resultados-reales-verify_first_serverpy).
 
@@ -111,9 +111,13 @@ Para correr la primera unidad contra una GPU real necesitas un proyecto de Googl
 
 ## Videos y artículos
 
-- **Práctica en YouTube**: [API de IA o tu propio servidor, con números](https://youtu.be/uf8cQv0R2K4)
-- **Siguiente práctica**: [Tu primer servidor vLLM con Gemma](https://youtu.be/pYJXpZsEWgg)
-- **Artículos en Substack**:
-  1. [Servir tu propio modelo, una serie para software devs](https://ykro1.substack.com/p/servir-tu-propio-modelo-con-vllm)
-  2. [¿API o servidor propio?](https://ykro1.substack.com/p/api-o-servidor-propio)
-  3. [Los 20 millones de tokens que la calculadora no cuenta](https://ykro1.substack.com/p/tokens-de-entrada-que-la-calculadora-no-cuenta)
+- **Playlist en YouTube**: [Servir modelos abiertos con vLLM](https://www.youtube.com/playlist?list=PLHXvZfB_MQuQ)
+- **Field Guide (`vllm-for-software-devs-field-guide`)**
+  - **YouTube**: [Video de Práctica — API de IA o tu propio servidor, con números](https://youtu.be/uf8cQv0R2K4)
+  - **Substack**: [Los 20 millones de tokens que la calculadora no cuenta](https://ykro1.substack.com/p/tokens-de-entrada-que-la-calculadora-no-cuenta)
+- **Tu primer servidor vLLM con Gemma ([`first-vllm-server-with-gemma`](https://github.com/ykro/first-vllm-server-with-gemma))**
+  - **YouTube**: [Video de Práctica](https://youtu.be/pYJXpZsEWgg)
+  - **Substack**: [Tu modelo es un endpoint HTTP](https://ykro1.substack.com/p/tu-modelo-es-un-endpoint-http) · [Qué guardar de cada respuesta](https://ykro1.substack.com/p/que-guardar-de-cada-respuesta-vllm)
+- **Tokens, memoria y cuantización en vLLM ([`tokens-memory-and-quantization-in-vllm`](https://github.com/ykro/tokens-memory-and-quantization-in-vllm))**
+  - **YouTube**: [Video de Práctica](https://youtu.be/Tjq87FZA8_M)
+  - **Substack**: [Un modelo de 4B que pesa 8B](https://ykro1.substack.com/p/un-modelo-de-4b-que-pesa-8b) · [Cuando vLLM se niega a arrancar](https://ykro1.substack.com/p/cuando-vllm-se-niega-a-arrancar)
